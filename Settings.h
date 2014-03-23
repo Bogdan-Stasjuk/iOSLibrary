@@ -9,19 +9,9 @@
 
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-#define kCellReuseId    @"Cell"
+#define EmptyString @""
 
-#define NAVBAR_HEIGHT       44.f
-#define STATUSBAR_HEIGHT    20.f
-#define TABBAR_HEIGHT 98.f
-#define TABBAR_HEIGHT_IPAD 56.f
-#define IPHONE3_5INCH_HEIGHT 480.f
-
-#define STATUSNAVBAR_HEIGHT (NAVBAR_HEIGHT + STATUSBAR_HEIGHT)
-
-#define SCREEN_WIDTH ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
-#define SCREEN_HEIGHT ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
-
+#define kCellReuseId @"Cell"
 
 #pragma mark - Enums
 
@@ -130,20 +120,33 @@ typedef enum {
 + (CGSize)shadowOffset:(ShadowFor)shadowForItem;
 + (CGFloat)shadowOpacity:(ShadowFor)shadowForItem;
 + (CGFloat)shadowRadius:(ShadowFor)shadowForItem;
-+ (UIColor *)shadowColor:(ShadowFor)shadowForItem;
++ (CGColorRef)shadowColor:(ShadowFor)shadowForItem;
 
-// Check device methods
+#pragma mark - Check device methods
+
 + (BOOL)isIpad;
 + (BOOL)isIphone3_5inch;
 + (BOOL)isIphoneGreater3_5inch;
++ (BOOL)isSimulator;
 
-// Check system version methods
+#pragma mark - Check system version methods
+
 + (BOOL)isSysVerGreaterOrEqualTo:(NSString *)ver;
 + (BOOL)isSysVerLessOrEqualTo:(NSString *)sysVer;
 + (BOOL)isSysVerLess7;
 
+#pragma mark - Screen methods
+
++ (CGFloat)screenWidth;
++ (CGFloat)screenHeight;
+
+#pragma mark - Design elements sizes
+
++ (CGFloat)statusBarHeight;
+
 /*
-// Location methods
+#pragma mark - Location methods
+
 + (CLLocationCoordinate2D)locationCoordinate2D:(LocationCoordinate2DFor)locationCoordinate2DForItem;
 */
 

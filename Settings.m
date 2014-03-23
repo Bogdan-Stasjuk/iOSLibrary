@@ -1,5 +1,4 @@
 #import "Settings.h"
-#import "UIColorEx.h"
 
 
 @interface Settings()
@@ -78,11 +77,11 @@
 }
 
 + (UIColor *)color:(ColorFor)colorForItem {
+    
     NSArray *colorsArr = @[
                            //[UIColor colorWithRed:211.f/255.f green:211.f/255.f blue:211.f/255.f alpha:1.f] // ColorForViewsBgDebug
                            [UIColor colorWithRed:211.f/255.f green:211.f/255.f blue:211.f/255.f alpha:0.f] // ColorForViewsBgDebug
                             ];
-    NSNumber *colorNumber = [colorsArr objectAtIndex:colorForItem];
     
     return [colorsArr objectAtIndex:colorForItem];
 }
@@ -100,7 +99,7 @@
 + (CGFloat)correction:(CorrectionFor)correctionForItem
 {
     NSArray *correctionArr = @[
-                                    [NSNumber numberWithFloat:0.f)] // 
+                                    [NSNumber numberWithFloat:0.f], //
                                 ];
     NSNumber *correctionNumber = [correctionArr objectAtIndex:correctionForItem];
     
@@ -205,12 +204,13 @@
 }
 
 + (CGColorRef)shadowColor:(ShadowFor)shadowForItem {
-    NSArray *colorsArr = @[
-                           @0x000000
-                            ];
-    NSNumber *colorNumber = [colorsArr objectAtIndex:shadowForItem];
     
-    return [UIColorEx colorFromHex:[colorNumber integerValue]].CGColor;
+    NSArray *colorsArr = @[
+                           [UIColor colorWithRed:211.f/255.f green:211.f/255.f blue:211.f/255.f alpha:0.f], // ColorForViewsBgDebug
+                            ];
+    UIColor *shadowColor = [colorsArr objectAtIndex:shadowForItem];
+    
+    return shadowColor.CGColor;
 }
 
 
@@ -241,13 +241,51 @@
 
 + (BOOL)isIphone3_5inch
 {
-    NSLog(@"%f", SCREEN_HEIGHT);
-    return SCREEN_HEIGHT == IPHONE3_5INCH_HEIGHT;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [Settings screenHeight] == [Settings iphone3_5inchScreenHeight];
 }
 
 + (BOOL)isIphoneGreater3_5inch
 {
-    return SCREEN_HEIGHT > IPHONE3_5INCH_HEIGHT;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [Settings screenHeight] > [Settings iphone3_5inchScreenHeight];
+}
+
++ (BOOL)isSimulator
+{
+    return TARGET_IPHONE_SIMULATOR;
+}
+
+
+#pragma mark - Screen methods
+
++ (CGFloat)screenWidth
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+
+    return orientation == UIDeviceOrientationPortrait ? [[UIScreen mainScreen] bounds].size.width
+                                                      : [[UIScreen mainScreen] bounds].size.height;
+}
+
++ (CGFloat)screenHeight
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+
+    return orientation == UIDeviceOrientationPortrait ? [[UIScreen mainScreen] bounds].size.height
+                                                      : [[UIScreen mainScreen] bounds].size.width;
+}
+
++ (CGFloat)iphone3_5inchScreenHeight
+{
+    return 480.f;
+}
+
+
+#pragma mark - Design elements sizes
+
++ (CGFloat)statusBarHeight
+{
+    CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+    
+    return MIN(statusBarSize.width, statusBarSize.height);
 }
 
 /*
