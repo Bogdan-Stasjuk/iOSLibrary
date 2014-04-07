@@ -12,3 +12,16 @@
 #pragma mark - set method as depricated
 
 - (void)someMethod __attribute__((deprecated));
+
+
+#pragma mark - Singleton
+
++ (instancetype)sharedInstance
+{
+    static id sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[[self class] alloc] init];
+    });
+    return sharedInstance;
+}

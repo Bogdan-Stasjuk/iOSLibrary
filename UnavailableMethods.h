@@ -5,14 +5,18 @@
 
 #pragma mark - Unavailable methods
 
+#pragma mark -NSObject
+
++ (id)new __attribute__((unavailable));
+
 #pragma mark -UIViewController
 
-- (id)init __attribute__((unavailable("init not available")));
-- (id)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("initWithCoder: not available")));
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable("initWithNibName:bundle: not available")));
+- (id)init __attribute__((unavailable));
+- (id)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable));
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable));
 
 #pragma mark -UIView
 
-- (id)initWithFrame:(CGRect)frame __attribute__((unavailable("initWithFrame: not available")));
+- (id)initWithFrame:(CGRect)frame __attribute__((unavailable));
 
 @end
