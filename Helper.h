@@ -8,6 +8,11 @@
         [self performSelector:@selector(undeclaredSelector)];
 #pragma clang diagnostic pop
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:@selector(undeclaredSelector)];
+#pragma clang diagnostic pop
+
 
 #pragma mark - set method as depricated
 
