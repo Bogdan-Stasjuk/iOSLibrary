@@ -30,3 +30,13 @@
     });
     return sharedInstance;
 }
+
+
+#pragma mark - Public methods
+#pragma mark -Abstract
+
+- (void)fillCellDictionary:(NSString *)key
+{
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
