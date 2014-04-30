@@ -35,8 +35,15 @@
 #pragma mark - Public methods
 #pragma mark -Abstract
 
-- (void)fillCellDictionary:(NSString *)key
+- (void)abstractMethod
 {
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+- (NSString *)abstractMethodWithReturnValue
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
 }
