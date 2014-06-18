@@ -21,6 +21,10 @@
 - (id)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable));
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable));
 
+#pagma mark -UITableViewController
+
+- (id)initWithStyle:(UITableViewStyle)style __attribute__((unavailable));
+
 #pragma mark -UIPopoverController
 
 - (id)initWithContentViewController:(UIViewController *)viewController __attribute__((unavailable));
