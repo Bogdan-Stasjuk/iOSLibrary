@@ -21,7 +21,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable));
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable));
 
-#pagma mark -UITableViewController
+#pragma mark -UITableViewController
 
 - (instancetype)initWithStyle:(UITableViewStyle)style __attribute__((unavailable));
 
