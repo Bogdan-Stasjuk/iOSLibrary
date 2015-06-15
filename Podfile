@@ -1,5 +1,0 @@
-platform :ios, '7.0'
-pod 'ReactiveCocoa'
-pod 'AFNetworking'
-pod 'NSDate+Helpers', :git => 'https://github.com/Bogdan-Stasjuk/NSDate-Helpers.git'
-pod 'UIAlert+Blocks', :git => 'https://github.com/Bogdan-Stasjuk/UIAlert-Blocks.git'
