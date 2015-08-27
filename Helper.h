@@ -14,6 +14,16 @@
 #pragma clang diagnostic pop
 
 
+#pragma mark - disable 'comparison of address of pointer' warning
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-pointer-compare"
+    if (&pointer == NULL) {
+    
+    }
+#pragma clang diagnostic pop
+
+
 #pragma mark - set method as depricated
 
 - (void)someMethod __attribute__((deprecated));
