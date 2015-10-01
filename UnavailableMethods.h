@@ -8,16 +8,15 @@
 #pragma mark -NSObject
 
 + (instancetype)new __attribute__((unavailable));
+- (instancetype)init __attribute__((unavailable));
 
 #pragma mark -UIView
 
-- (instancetype)init __attribute__((unavailable));
 - (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable));
 - (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable));
 
 #pragma mark -UIViewController
 
-- (instancetype)init __attribute__((unavailable));
 - (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable));
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil __attribute__((unavailable));
 
